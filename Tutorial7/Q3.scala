@@ -1,26 +1,21 @@
 object Q3 extends App {
 
-    def filterPrime(l:List[Int]):List[AnyVal] = {
-      var newl:List[AnyVal] = l.filter( (x:Int) => prime(x)==true)
-      return newl
+  def filterPrime(numbers: List[Int]): List[Int] = {
+    numbers.filter(x => isPrime(x))
+  }
+    def isPrime(num: Int,int: Int = 2): Boolean = {
+      if(num<2) false
+      else if(num==2) true
+      else if(int*int>num) true
+      else if(num%int==0) false
+      else isPrime(num,int+1)
     }
-    def prime(num: Int,int: Int = 2): Boolean = {
-      if(num<2) {
-        return false
-      }
-      else if(num==2) {
-        return true
-      }
-      else if(int*int>num) {
-        return true
-      }
-      else if(num%int==0) {
-        return false
-      }
-      else {
-        return prime(num,int+1)
-      }
-    }
-    println(filterPrime(List(1,2,3,4,5,6,7,8,9,10,101,150,225,87,17,19,29)))
+
+  var inputList: List[Int] = List(1,2,3,4,5,6,7,8,9,10,101,150,225,87,17,19,29)
+  var outputList: List[Int] = filterPrime(inputList)
+
+  println(outputList)
+
 
 }
+
